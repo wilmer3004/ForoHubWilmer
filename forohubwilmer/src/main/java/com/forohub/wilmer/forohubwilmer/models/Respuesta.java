@@ -1,5 +1,6 @@
 package com.forohub.wilmer.forohubwilmer.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,6 +34,15 @@ public class Respuesta implements Serializable {
     private String solucion;
 
     //Relaciones
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_topico_fk", nullable = false)
+    private Topico idTopicoFK;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_autor_fk", nullable = false)
+    private Usuario idAutorFK;
 
 
 }

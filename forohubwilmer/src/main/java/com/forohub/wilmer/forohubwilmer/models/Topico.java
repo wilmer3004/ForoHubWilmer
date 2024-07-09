@@ -1,5 +1,6 @@
 package com.forohub.wilmer.forohubwilmer.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -37,6 +39,18 @@ public class Topico implements Serializable {
 
     //Relaciones
 
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_curso_fk", nullable = false)
+    private Curso idCursoFK;
+
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_autor_fk", nullable = false)
+    private Usuario idAutorFK;
+
+    @OneToMany(mappedBy = "idTopicoFK", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Respuesta> respuestaList;
 
 
 

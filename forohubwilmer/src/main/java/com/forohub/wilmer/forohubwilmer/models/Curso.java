@@ -1,5 +1,6 @@
 package com.forohub.wilmer.forohubwilmer.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Entity
@@ -29,6 +31,8 @@ public class Curso implements Serializable {
 
     //Relaciones
 
+    @OneToMany(mappedBy = "idCursoFK", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Topico> topicoList;
 
 
 

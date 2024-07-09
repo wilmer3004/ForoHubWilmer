@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Entity
@@ -25,6 +26,8 @@ public class Perfil implements Serializable {
     private String nombre;
 
     //Relaciones
+    @OneToMany(mappedBy = "idPerfilFK",  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Usuario> usuarioList;
 
 
 }

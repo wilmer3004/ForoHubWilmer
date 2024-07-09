@@ -1,5 +1,6 @@
 package com.forohub.wilmer.forohubwilmer.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Entity
@@ -31,5 +33,17 @@ public class Usuario implements Serializable {
     private String contrasena;
 
     //Relaciones
+
+    @OneToMany(mappedBy = "idAutorFK", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Topico> topicoList;
+
+    @OneToMany(mappedBy = "idAutorFK", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Respuesta> respuestaList;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_perfil_fk", nullable = false)
+    private Perfil idPerfilFK;
+
 
 }
