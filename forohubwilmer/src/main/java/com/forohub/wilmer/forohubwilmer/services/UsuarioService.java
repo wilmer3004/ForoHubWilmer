@@ -1,9 +1,11 @@
 package com.forohub.wilmer.forohubwilmer.services;
 
 import com.forohub.wilmer.forohubwilmer.models.Usuario;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface UsuarioService {
 
     public List<Usuario> listUsuario();
