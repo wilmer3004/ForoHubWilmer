@@ -39,7 +39,7 @@ public class PerfilServiceImpl implements PerfilService {
 
     @Override
     public void addPerfil(DatosPerfil datosPerfil) {
-        perfilRepository.save(modelMapper.map(datosPerfil, Perfil.class))
+        perfilRepository.save(modelMapper.map(datosPerfil, Perfil.class));
     }
 
     @Override
