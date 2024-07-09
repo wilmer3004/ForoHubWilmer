@@ -1,5 +1,6 @@
 package com.forohub.wilmer.forohubwilmer.services.impl;
 
+import com.forohub.wilmer.forohubwilmer.dtos.DatosTopico;
 import com.forohub.wilmer.forohubwilmer.models.Topico;
 import com.forohub.wilmer.forohubwilmer.repositories.TopicoRepository;
 import com.forohub.wilmer.forohubwilmer.services.TopicoService;
@@ -16,22 +17,22 @@ public class TopicoServiceImpl implements TopicoService {
     private TopicoRepository topicoRepository;
 
     @Override
-    public List<Topico> listTopico() {
+    public List<DatosTopico> listTopico() {
         return List.of();
     }
 
     @Override
-    public Topico findByIdTopico(Long id) {
+    public DatosTopico findByIdTopico(Long id) {
         return null;
     }
 
     @Override
-    public void addTopico(Topico topico) {
+    public void addTopico(DatosTopico datosTopico) {
 
     }
 
     @Override
-    public void updateTopico(Topico topico) {
+    public void updateTopico(DatosTopico datosTopico, Long id) {
 
     }
 

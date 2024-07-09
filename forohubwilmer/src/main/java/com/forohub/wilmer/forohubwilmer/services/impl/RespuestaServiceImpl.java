@@ -1,5 +1,6 @@
 package com.forohub.wilmer.forohubwilmer.services.impl;
 
+import com.forohub.wilmer.forohubwilmer.dtos.DatosRespuesta;
 import com.forohub.wilmer.forohubwilmer.models.Respuesta;
 import com.forohub.wilmer.forohubwilmer.repositories.RespuestaRepository;
 import com.forohub.wilmer.forohubwilmer.services.RespuestaService;
@@ -16,22 +17,22 @@ public class RespuestaServiceImpl implements RespuestaService {
     private RespuestaRepository respuestaRepository;
 
     @Override
-    public List<Respuesta> listRespuesta() {
+    public List<DatosRespuesta> listRespuesta() {
         return List.of();
     }
 
     @Override
-    public Respuesta findByIdRespuesta(Long id) {
+    public DatosRespuesta findByIdRespuesta(Long id) {
         return null;
     }
 
     @Override
-    public void addRespuesta(Respuesta respuesta) {
+    public void addRespuesta(DatosRespuesta datosRespuesta) {
 
     }
 
     @Override
-    public void updateRespuesta(Respuesta respuesta) {
+    public void updateRespuesta(DatosRespuesta datosRespuesta, Long id) {
 
     }
 

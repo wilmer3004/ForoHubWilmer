@@ -1,5 +1,6 @@
 package com.forohub.wilmer.forohubwilmer.services.impl;
 
+import com.forohub.wilmer.forohubwilmer.dtos.DatosCurso;
 import com.forohub.wilmer.forohubwilmer.models.Curso;
 import com.forohub.wilmer.forohubwilmer.repositories.CursoRepository;
 import com.forohub.wilmer.forohubwilmer.services.CursoService;
@@ -17,22 +18,22 @@ public class CursoServiceImpl implements CursoService {
     private CursoRepository cursoRepository;
 
     @Override
-    public List<Curso> listCurso() {
-        return List.of();
-    }
-
-    @Override
-    public Curso findByIdCurso(Long id) {
+    public List<DatosCurso> listCurso() {
         return null;
     }
 
     @Override
-    public void addCurso(Curso curso) {
+    public DatosCurso findByIdCurso(Long id) {
+        return null;
+    }
+
+    @Override
+    public void addCurso(DatosCurso datosCurso) {
 
     }
 
     @Override
-    public void updateCurso(Curso curso) {
+    public void updateCurso(DatosCurso datosCurso, Long id) {
 
     }
 

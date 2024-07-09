@@ -1,5 +1,6 @@
 package com.forohub.wilmer.forohubwilmer.services.impl;
 
+import com.forohub.wilmer.forohubwilmer.dtos.DatosPerfil;
 import com.forohub.wilmer.forohubwilmer.models.Perfil;
 import com.forohub.wilmer.forohubwilmer.repositories.PerfilRepository;
 import com.forohub.wilmer.forohubwilmer.services.PerfilService;
@@ -16,22 +17,22 @@ public class PerfilServiceImpl implements PerfilService {
     private PerfilRepository perfilRepository;
 
     @Override
-    public List<Perfil> listPerfil() {
+    public List<DatosPerfil> listPerfil() {
         return List.of();
     }
 
     @Override
-    public Perfil findByIdPerfil(Long id) {
+    public DatosPerfil findByIdPerfil(Long id) {
         return null;
     }
 
     @Override
-    public void addPerfil(Perfil perfil) {
+    public void addPerfil(DatosPerfil datosPerfil) {
 
     }
 
     @Override
-    public void updatePerfil(Perfil perfil) {
+    public void updatePerfil(DatosPerfil datosPerfil, Long id) {
 
     }
 
