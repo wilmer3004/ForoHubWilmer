@@ -1,5 +1,6 @@
 package com.forohub.wilmer.forohubwilmer.controllers;
 
+import com.forohub.wilmer.forohubwilmer.Http.ResponseGet;
 import com.forohub.wilmer.forohubwilmer.dtos.DatosCurso;
 import com.forohub.wilmer.forohubwilmer.services.impl.CursoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,18 @@ public class CursoController {
 
     @GetMapping("/all")
     public ResponseEntity all(){
-        return null;
+        ResponseGet responseGet = new ResponseGet();
+
+        if (!cursoServiceImpl.listCurso().isEmpty()){
+            responseGet.setData(cursoServiceImpl.listCurso());
+            responseGet.setMessage("Success full");
+            responseGet.setStatus(200);
+        }else {
+            responseGet.setData(cursoServiceImpl.listCurso());
+            responseGet.setMessage("NotFound");
+            responseGet.setStatus(200);
+        }
+        return ResponseEntity.ok(responseGet);
     }
 
     @GetMapping("/by-id/{id}")

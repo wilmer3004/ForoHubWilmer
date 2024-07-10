@@ -6,6 +6,7 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.forohub.wilmer.forohubwilmer.models.Usuario;
+import com.forohub.wilmer.forohubwilmer.utils.errors.TokenInvalidoException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +35,8 @@ public class TokenService {
     }
 
     public String getSubject(String token) {
-        if (token == null) {
-            throw new RuntimeException();
+        if (token == null || token.isEmpty()) {
+            throw new TokenInvalidoException("Token no proporcionado o invalido");
         }
         DecodedJWT verifier = null;
         try {
@@ -46,13 +47,14 @@ public class TokenService {
                     .verify(token);
             verifier.getSubject();
         } catch (JWTVerificationException exception) {
-            System.out.println(exception.toString());
+            throw new TokenInvalidoException("Token invalido");
         }
         if (verifier.getSubject() == null) {
-            throw new RuntimeException("Verifier invalido");
+            throw new TokenInvalidoException("Token invalido");
         }
         return verifier.getSubject();
     }
+
 
     private Instant generarFechaExpiracion() {
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-05:00"));

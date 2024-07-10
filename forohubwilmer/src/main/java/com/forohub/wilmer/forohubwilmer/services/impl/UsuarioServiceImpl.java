@@ -60,7 +60,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     public boolean userExist(String correoElectronico, String contrasena){
-        Usuario usuario = usuarioRepository.findByCorreoElectronico2(correoElectronico);    
+        Usuario usuario = usuarioRepository.findByCorreoElectronico2(correoElectronico);
         if (usuario != null && passwordEncoder.matches(contrasena, usuario.getContrasena())) {
             return true;
         }
