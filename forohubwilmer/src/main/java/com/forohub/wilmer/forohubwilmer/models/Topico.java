@@ -40,17 +40,29 @@ public class Topico implements Serializable {
     //Relaciones
 
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_curso_fk", nullable = false)
     private Curso idCursoFK;
 
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_autor_fk", nullable = false)
     private Usuario idAutorFK;
 
-    @OneToMany(mappedBy = "idTopicoFK", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToMany(mappedBy = "idTopicoFK", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<Respuesta> respuestaList;
+
+    @Override
+    public String toString() {
+        return "Topico{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", mensaje='" + mensaje + '\'' +
+                ", fechaCreacion=" + fechaCreacion +
+                ", status=" + status +
+                '}';
+    }
 
 
 

@@ -1,6 +1,14 @@
 package com.forohub.wilmer.forohubwilmer.dtos;
 
-public record DatosPerfil(
-        String nombre
-) {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class DatosPerfil{
+        Long id;
+        String nombre;
+
 }

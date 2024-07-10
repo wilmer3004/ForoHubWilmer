@@ -1,12 +1,18 @@
 package com.forohub.wilmer.forohubwilmer.dtos;
 
-import jakarta.persistence.Column;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-public record DatosRespuesta(
-        String mensaje,
-        Date fechaCreacion,
-        String solucion
-) {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class DatosRespuesta{
+        Long id;
+        String mensaje;
+        Date fechaCreacion;
+        String solucion;
 }

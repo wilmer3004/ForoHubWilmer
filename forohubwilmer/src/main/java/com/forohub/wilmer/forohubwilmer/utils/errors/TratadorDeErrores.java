@@ -34,6 +34,17 @@ public class TratadorDeErrores {
         responseError.setPath("/error/login");
         return new ResponseEntity<>(responseError, HttpStatus.UNAUTHORIZED);
     }
+
+    @ExceptionHandler(CustomException.class)
+    public ResponseEntity tratarErrorCustom(CustomException e){
+        ResponseError responseError = new ResponseError();
+        responseError.setError(e.getMessage());
+        responseError.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        responseError.setMessage(e.getMessage());
+        responseError.setPath("/error");
+        return new ResponseEntity<>(responseError, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     private record DatosErrorValidacion(String campo, String error){
         public DatosErrorValidacion(FieldError error) {
             this(error.getField(), error.getDefaultMessage());

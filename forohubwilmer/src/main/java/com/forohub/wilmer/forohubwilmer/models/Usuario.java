@@ -38,14 +38,17 @@ public class Usuario implements Serializable, UserDetails {
 
     //Relaciones
 
-    @OneToMany(mappedBy = "idAutorFK", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "idAutorFK", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<Topico> topicoList;
 
-    @OneToMany(mappedBy = "idAutorFK", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(mappedBy = "idAutorFK", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<Respuesta> respuestaList;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_perfil_fk", nullable = false)
     private Perfil idPerfilFK;
 
@@ -82,6 +85,16 @@ public class Usuario implements Serializable, UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", correoElectronico='" + correoElectronico + '\'' +
+                ", contrasena='" + contrasena + '\'' +
+                '}';
     }
 
 }

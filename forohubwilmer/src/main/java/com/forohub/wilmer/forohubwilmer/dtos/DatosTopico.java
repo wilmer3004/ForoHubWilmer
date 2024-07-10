@@ -1,12 +1,20 @@
 package com.forohub.wilmer.forohubwilmer.dtos;
 
 
-import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public record DatosTopico(
-        String titulo,
-        String mensaje,
-        Date fechaCreacion,
-        Boolean status
-) {
+import java.util.Date;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class DatosTopico{
+        Long id;
+        String titulo;
+        String mensaje;
+        Date fechaCreacion;
+        Boolean status;
+        Long idAutorFK;
+        Long idCursoFK;
 }

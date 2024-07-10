@@ -31,8 +31,19 @@ public class Curso implements Serializable {
 
     //Relaciones
 
-    @OneToMany(mappedBy = "idCursoFK", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToMany(mappedBy = "idCursoFK", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<Topico> topicoList;
+
+
+    @Override
+    public String toString() {
+        return "Curso{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", categoria='" + categoria + '\'' +
+                '}';
+    }
 
 
 

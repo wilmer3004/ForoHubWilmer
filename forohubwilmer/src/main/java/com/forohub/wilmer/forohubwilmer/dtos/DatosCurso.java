@@ -1,9 +1,14 @@
 package com.forohub.wilmer.forohubwilmer.dtos;
 
-import jakarta.persistence.Column;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public record DatosCurso(
-        String nombre,
-        String categoria
-) {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class DatosCurso{
+        Long id;
+        String nombre;
+        String categoria;
 }

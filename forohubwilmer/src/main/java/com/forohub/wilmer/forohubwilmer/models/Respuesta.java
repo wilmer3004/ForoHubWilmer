@@ -35,12 +35,12 @@ public class Respuesta implements Serializable {
 
     //Relaciones
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_topico_fk", nullable = false)
     private Topico idTopicoFK;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_autor_fk", nullable = false)
     private Usuario idAutorFK;
 

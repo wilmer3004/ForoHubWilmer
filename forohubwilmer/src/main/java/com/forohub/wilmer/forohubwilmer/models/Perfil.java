@@ -1,5 +1,6 @@
 package com.forohub.wilmer.forohubwilmer.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,7 +27,8 @@ public class Perfil implements Serializable {
     private String nombre;
 
     //Relaciones
-    @OneToMany(mappedBy = "idPerfilFK",  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(mappedBy = "idPerfilFK",  cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<Usuario> usuarioList;
 
 
