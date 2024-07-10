@@ -18,7 +18,7 @@ create table usuario(
       id bigint not null auto_increment,
       nombre varchar(155) not null,
       correo_electronico varchar(255) not null unique,
-      contrasena varchar(55) not null,
+      contrasena varchar(300) not null,
       id_perfil_fk bigint not null,
 
       primary key (id)
