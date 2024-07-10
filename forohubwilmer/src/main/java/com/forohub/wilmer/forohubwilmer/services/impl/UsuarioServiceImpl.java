@@ -8,6 +8,7 @@ import com.forohub.wilmer.forohubwilmer.repositories.UsuarioRepository;
 import com.forohub.wilmer.forohubwilmer.services.UsuarioService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,6 +20,9 @@ public class UsuarioServiceImpl implements UsuarioService {
     //Inyeccion de dependencia
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     private final ModelMapper modelMapper = new ModelMapper();
 
@@ -53,5 +57,13 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public void deleteUsuario(Long id) {
         usuarioRepository.deleteById(id);
+    }
+
+    public boolean userExist(String correoElectronico, String contrasena){
+        Usuario usuario = usuarioRepository.findByCorreoElectronico2(correoElectronico);    
+        if (usuario != null && passwordEncoder.matches(contrasena, usuario.getContrasena())) {
+            return true;
+        }
+        return false;
     }
 }

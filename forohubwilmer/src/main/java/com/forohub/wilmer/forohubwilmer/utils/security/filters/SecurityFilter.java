@@ -33,7 +33,7 @@ public class SecurityFilter extends OncePerRequestFilter {
                 // Token valido
                 var usuario = usuarioRepository.findByCorreoElectronico(nombreUsuario);
                 var authentication = new UsernamePasswordAuthenticationToken(usuario, null,
-                        usuario.getAuthorities()); // Forzamos un inicio de sesion
+                        usuario.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
