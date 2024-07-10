@@ -71,34 +71,7 @@ public class SecurityFilter extends OncePerRequestFilter {
                 }
                 return;
             }
-        } else {
-
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-
-            ResponseError responseError = new ResponseError();
-            responseError.setError("Token no presente");
-            responseError.setStatus(HttpStatus.UNAUTHORIZED.value());
-            responseError.setMessage("Error de autenticación: Token no presente");
-            responseError.setPath("/error/login");
-
-            Map<String, Object> responseMap = new HashMap<>();
-            responseMap.put("error", responseError.getError());
-            responseMap.put("status", responseError.getStatus());
-            responseMap.put("message", responseError.getMessage());
-            responseMap.put("path", responseError.getPath());
-
-            ObjectMapper objectMapper = new ObjectMapper();
-            try {
-                String jsonResponse = objectMapper.writeValueAsString(responseMap);
-                response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-                response.setCharacterEncoding(StandardCharsets.UTF_8.displayName());
-                response.getWriter().write(jsonResponse);
-            } catch (JsonProcessingException | UnsupportedEncodingException e) {
-                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                response.getWriter().write("Error al procesar la respuesta");
-            }
-            return;
-        }
+        } 
         filterChain.doFilter(request, response);
     }
 }
